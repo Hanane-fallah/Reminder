@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All Tasks</title>
+</head>
+<body>
+<h2>List of all Tasks:</h2>
+{% for obj in object_list %}
+<li>{{ obj.title }} --> done: {{ obj.done }}</li>
+    <br>
+{% endfor %}
+</body>
+</html>
