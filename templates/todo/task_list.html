@@ -5,7 +5,12 @@
     <title>All Tasks</title>
 </head>
 <body>
+{% if slug %}
+<h2>Category {{ slug }}</h2>
+{% else %}
 <h2>List of all Tasks:</h2>
+{% endif %}
+
 {% for obj in object_list %}
     <li>{{ obj.title }} --> done: {{ obj.done }}
     <a href="{% url 'todo:task_detail' obj.slug %}"> Detail</a>
@@ -29,7 +34,10 @@
 {% endif %}
 
 </nav>
-
+<br>
+{% if slug %}
+<a href="{% url 'todo:task_list' %}">All Tasks</a>
+{% endif %}
 
 </body>
 </html>
