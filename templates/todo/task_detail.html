@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task Detail</title>
+</head>
+<body>
+<h2>Task {{ object.title }}</h2>
+<li>Task Category : {{ object.category }}</li>
+<br>
+<li>Task Description : {{ object.description }}</li>
+<br>
+
+<li>Task Priority : {{ object.priority }}</li>
+<br>
+
+<li>Task Due Date : {{ object.due_date }}</li>
+<br>
+
+<li>Done :
+    {% if object.done %}Yes :)
+        {% else %}
+        No :(
+    {% endif %}
+</li>
+<h4>NOW : {% now "SHORT_DATETIME_FORMAT" %}</h4>
+
+<a href="{% url 'todo:task_list' %}">Back to Task List</a>
+</body>
+</html>
