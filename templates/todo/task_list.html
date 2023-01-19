@@ -36,8 +36,12 @@
 </nav>
 <br>
 {% if slug %}
+<a href="{% url 'cat' %}">Categories</a>
+<br>
+<br>
 <a href="{% url 'todo:task_list' %}">All Tasks</a>
 {% endif %}
-
+<br><br>
+<a href="{% url 'index' %}"># HOME</a>
 </body>
 </html>
