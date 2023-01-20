@@ -1,24 +1,39 @@
 {% extends 'index.html' %}
 {% block content %}
-<h2>Task {{ object.title }}</h2>
-<li>Task Category : {{ object.category }}</li>
-<br>
-<li>Task Description : {{ object.description }}</li>
-<br>
+    <h2>Task {{ object.title }}</h2>
+    <li>Task Category : {{ object.category }}</li>
+    <br>
+    <li>Task Description : {{ object.description }}</li>
+    <br>
 
-<li>Task Priority : {{ object.priority }}</li>
-<br>
+    <li>Task Priority : {{ object.priority }}</li>
+    <br>
 
-<li>Task Due Date : {{ object.due_date }}</li>
-<br>
+    <li>Task Due Date : {{ object.due_date }}</li>
+    {% if object.done == False and object.due_date != None %}
+        {% load time_until %}
 
-<li>Done :
-    {% if object.done %}Yes :)
+        {% if object.due_date|calc_time %}
+            <br>
+            <li>
+
+                You have {{ object.due_date|calc_time }} hours to do this
+            </li>
         {% else %}
-        No :(
+            <br>
+            <li>You miss the time to do this :(</li>
+        {% endif %}
     {% endif %}
-</li>
-<h4>NOW : {% now "SHORT_DATETIME_FORMAT" %}</h4>
-{#todo: days until#}
-<a href="{% url 'todo:task_list' %}">Back to Task List</a>
+
+    <br>
+
+    <li>Done :
+        {% if object.done %}Yes
+        {% else %}
+            No
+        {% endif %}
+    </li>
+    <h4>NOW : {% now "SHORT_DATETIME_FORMAT" %}</h4>
+    {#todo: days until#}
+    <a href="{% url 'todo:task_list' %}">Back to Task List</a>
 {% endblock %}
