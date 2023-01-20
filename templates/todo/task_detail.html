@@ -1,6 +1,6 @@
 {% extends 'index.html' %}
 {% block content %}
-    <h2>Task {{ object.title }}</h2>
+    <h2>Task {{ object.title|title }}</h2>
     <li>Task Category : {{ object.category }}</li>
     <br>
     <li>Task Description : {{ object.description }}</li>
