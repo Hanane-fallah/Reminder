@@ -17,9 +17,12 @@ from django.contrib import admin
 from django.urls import path, include
 from django.views.generic import TemplateView
 
+from todo import views
+
 urlpatterns = [
     path('admin/', admin.site.urls, name='admin'),
-    path('', TemplateView.as_view(template_name='index.html'), name='index'),
+    path('', views.Index.as_view(), name='index'),
     path('category/', TemplateView.as_view(template_name='todo/category.html'), name='cat'),
+    path('new_task/', TemplateView.as_view(template_name='todo/new_task.html'), name='new_task'),
     path('todo/', include(('todo.urls', 'todo'), namespace='todo'))
 ]

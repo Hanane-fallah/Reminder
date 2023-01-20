@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>New Task</title>
+</head>
+<body>
+<h2>Add new Task</h2>
+<form action="{% url 'index' %}" method="post">
+    {% csrf_token %}
+    <label>Title --> </label><input type="text" name="title">
+    <br><br>
+    <label>Description --> </label><input type="text" name="desc">
+    <p>Category : </p>
+    <label>Personal</label><input type="radio" name="category" value="per" checked><br>
+    <label>Education</label><input type="radio" name="category" value="edu"><br>
+    <label>Sport</label><input type="radio" name="category" value="spo"><br>
+    <label>To Buy</label><input type="radio" name="category" value="buy"><br>
+
+    <p>Priority : </p>
+    <label>Urgent</label><input type="radio" name="priority" value="ur" checked><br>
+    <label>Important</label><input type="radio" name="priority" value="im"><br>
+    <label>Do Later</label><input type="radio" name="priority" value="la"><br>
+    <br>
+    <label>Due date --> </label><input type="datetime-local" name="due_date"><br><br>
+    <label>Done : </label><input type="checkbox" value="done" name="done"><br><br><br>
+    <input type="submit" value="Add" onclick="alert('Task Added to your task list')">
+
+</form>
+</body>
+</html>
