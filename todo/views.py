@@ -50,3 +50,23 @@ class Index(View):
         task.save()
 
         return redirect('index')
+
+class Manager(View):
+    def get(self, request):
+        # categories = Task.objects.values('category')
+        # print(Task.objects.values('category'))
+        all_categories = ['per', 'edu', 'spo', 'buy']
+        with_data = []
+        no_data = []
+        for c in all_categories:
+            if Task.objects.filter(category=c):
+                with_data.append(c)
+            else:
+                no_data.append(c)
+
+        context = {
+            'with_data': with_data,
+            'no_data': no_data
+        }
+
+        return render(request, 'todo/category.html', context=context)

@@ -1,15 +1,16 @@
 {% extends 'index.html' %}
 {% block content %}
 <h2>Categories : </h2>
-<li><a href="{% url 'todo:task_list' 'per' %}">Personal</a></li>
-<br>
-<li><a href="{% url 'todo:task_list' 'edu' %}">Education</a></li>
-<br>
+{% for w in with_data %}
+    <li><a href="{% url 'todo:cat_task_list' w %}">{{ w }}</a></li>
+    <br>
+{% endfor %}
+<h2>Categories with no task : </h2>
 
-<li><a href="{% url 'todo:task_list' 'spo' %}">Sport</a></li>
-<br>
+{% for n in no_data %}
+    <li><a href="{% url 'todo:cat_task_list' n  %}">{{ n }}</a></li>
+    <br>
+{% endfor %}
 
-<li><a href="{% url 'todo:task_list' 'buy' %}">To buy</a></li>
-<br>
 
 {% endblock %}
