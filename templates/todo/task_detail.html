@@ -1,10 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Task Detail</title>
-</head>
-<body>
+{% extends 'index.html' %}
+{% block content %}
 <h2>Task {{ object.title }}</h2>
 <li>Task Category : {{ object.category }}</li>
 <br>
@@ -26,5 +21,4 @@
 <h4>NOW : {% now "SHORT_DATETIME_FORMAT" %}</h4>
 {#todo: days until#}
 <a href="{% url 'todo:task_list' %}">Back to Task List</a>
-</body>
-</html>
+{% endblock %}

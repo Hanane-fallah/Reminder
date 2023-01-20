@@ -1,10 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>All Tasks</title>
-</head>
-<body>
+{% extends 'index.html' %}
+{% block content %}
 {% if slug %}
 <h2>Category {{ slug }}</h2>
 {% else %}
@@ -41,7 +36,5 @@
 <br>
 <a href="{% url 'todo:task_list' %}">All Tasks</a>
 {% endif %}
-<br><br>
-<a href="{% url 'index' %}"># HOME</a>
-</body>
-</html>
+
+{% endblock %}

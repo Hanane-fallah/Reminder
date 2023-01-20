@@ -1,10 +1,5 @@
-<!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/html">
-<head>
-    <meta charset="UTF-8">
-    <title>New Task</title>
-</head>
-<body>
+{% extends 'index.html' %}
+{% block content %}
 <h2>Add new Task</h2>
 <form action="{% url 'index' %}" method="post">
     {% csrf_token %}
@@ -27,5 +22,4 @@
     <input type="submit" value="Add" onclick="alert('Task Added to your task list')">
 
 </form>
-</body>
-</html>
+{% endblock %}

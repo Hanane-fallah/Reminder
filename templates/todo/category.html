@@ -1,10 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Categories</title>
-</head>
-<body>
+{% extends 'index.html' %}
+{% block content %}
 <h2>Categories : </h2>
 <li><a href="{% url 'todo:task_list' 'per' %}">Personal</a></li>
 <br>
@@ -16,7 +11,5 @@
 
 <li><a href="{% url 'todo:task_list' 'buy' %}">To buy</a></li>
 <br>
-<a href="{% url 'index' %}"># HOME</a>
 
-</body>
-</html>
+{% endblock %}
