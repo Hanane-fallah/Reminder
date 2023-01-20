@@ -22,7 +22,7 @@ from todo import views
 urlpatterns = [
     path('admin/', admin.site.urls, name='admin'),
     path('', views.Index.as_view(), name='index'),
-    path('category/', views.Manager.as_view(), name='cat'),
+    path('category/', views.Category.as_view(), name='cat'),
     path('new_task/', TemplateView.as_view(template_name='todo/new_task.html'), name='new_task'),
     path('todo/', include(('todo.urls', 'todo'), namespace='todo'))
 ]

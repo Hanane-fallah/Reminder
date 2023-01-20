@@ -1,8 +1,11 @@
+from datetime import datetime, timezone
+
 from django.shortcuts import render, redirect
 from django.views import View
 from django.views.generic import ListView, DetailView
 
 from todo.models import Task
+from todo.templatetags.time_until import calc_time
 
 
 # Create your views here.
@@ -51,7 +54,7 @@ class Index(View):
 
         return redirect('index')
 
-class Manager(View):
+class Category(View):
     def get(self, request):
         # categories = Task.objects.values('category')
         # print(Task.objects.values('category'))
@@ -70,3 +73,11 @@ class Manager(View):
         }
 
         return render(request, 'todo/category.html', context=context)
+
+
+class Manager(ListView):
+    model = Task
+    paginate_by = 5
+
+    def get_queryset(self):
+        return Task.objects.filter(due_date__lt=datetime.now(timezone.utc), done=False)
